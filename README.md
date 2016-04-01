@@ -11,5 +11,5 @@ SelectCircleDemo
 
 演示动画
 ==========
-![](https://github.com/xhisdai/SelectCircleDemo/circle.gif)
+![](https://github.com/xhisdai/SelectCircleDemo/cricle.gif)
 
