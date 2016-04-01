@@ -37,26 +37,27 @@
 
 @implementation CircleSelectView
 
-
+/*
+ * 初始化
+ */
 - (instancetype)initWithFrame:(CGRect)frame{
     
     if (self =[super initWithFrame:frame]) {
         
-        [self CreateSelfViewUI:frame]; //自身界面
+        [self CreateSelfViewUI:frame];
         
-        [self addTapGestureRecognizer]; //加载滑动手势
-        
-        
+        [self addTapGestureRecognizer];
     }
-    
     return self;
 }
-
+/*
+ * param \delegate 代理
+ */
 - (void)setViewDelegate:(id<CircleSelecteDelegate>)delegate{
     
     self.delegate =delegate;
     
-    [self GetButtonData]; //获取button 数据
+    [self GetButtonData]; //获取所有数据
     
     [self drawViewUI]; //画颜色背景
     
@@ -64,9 +65,11 @@
     
     [self CreateHeaderImageUI]; //加载头像UI
     
-    [self ReturnDefaultButton];//传出默认值
+    [self ReturnDefaultButton];//传出默认选项值
 }
-
+/*
+ * 加载头像UI
+ */
 - (void)CreateHeaderImageUI{
     
     UIButton * header =[UIButton buttonWithType:UIButtonTypeCustom];
@@ -81,7 +84,9 @@
     header.layer.borderColor =[UIColor whiteColor].CGColor;
     header.layer.borderWidth =2.0;
 }
-
+/*
+ *加载自身界面UI
+ */
 - (void)CreateSelfViewUI:(CGRect)frame{
     
     self.backgroundColor =[UIColor whiteColor];
@@ -96,7 +101,9 @@
     Radius =frame.size.width/2;
     
 }
-
+/*
+ * 获取所有数据
+ */
 - (void)GetButtonData{
     //获取按钮的title数组
     if ([self.delegate respondsToSelector:@selector(buttonTitleWithItems)]) {
@@ -130,7 +137,9 @@
         _BtnSize =CGSizeMake(0, 0);
     }
 }
-
+/*
+ * 创建button UI
+ */
 - (void)CreateButtonUI{
     
     _BtnsArray = [NSMutableArray new];
@@ -158,14 +167,18 @@
     [self BtnsLayout]; //调整 button 中心点位置
     
 }
-
+/*
+ * 按钮方法
+ */
 - (void)BtnClick:(UIButton *)sender{
     
     if ([_delegate respondsToSelector:@selector(ButtonClick:)]) {
         [_delegate ButtonClick:sender.tag -BTNTAG];
     }
 }
-
+/*
+ * 调整按钮中心位置
+ */
 - (void)BtnsLayout{
     
     for (NSInteger i=0; i<_BtnNumbers ;i++) {
@@ -179,7 +192,9 @@
     }
 }
 
-
+/*
+ *加载滑动手势
+ */
 - (void)addTapGestureRecognizer{
     
     _panGestureR =[[UIPanGestureRecognizer alloc]initWithTarget:self action:@selector(CircleViewGesture:)];
@@ -188,7 +203,9 @@
 }
 
 
-
+/*
+ * 滑动手势
+ */
 - (void)CircleViewGesture:(UIPanGestureRecognizer *)gesture{
     
     
@@ -248,7 +265,9 @@
         
     }
 }
-
+/*
+ * 传出默认选项值
+ */
 - (void)ReturnDefaultButton{
     
     CGFloat number=_BtnNumbers;
@@ -271,7 +290,9 @@
         
     }
 }
-
+/*
+ * 计算角度 不足半格不转动,超过半格转动一格
+ */
 - (double)RunAngleValue{
     
     double number =_BtnNumbers;
@@ -324,7 +345,9 @@
     }
 }
 
-
+/*
+ * 画颜色背景
+ */
 - (void)drawViewUI{
     
     CGFloat numbers =_BtnNumbers;
