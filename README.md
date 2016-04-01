@@ -9,5 +9,7 @@ SelectCircleDemo
 
 数据都用代理传递，可以根据数据和方法划分dataSource,和delegate。demo只使用delegate，没有区分，请自行区分!
 
-
+演示动画
+==========
+![](https://github.com/xhisdai/SelectCircleDemo/circle.gif)
 
