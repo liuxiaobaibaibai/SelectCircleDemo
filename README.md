@@ -1,9 +1,9 @@
 SelectCircleDemo
 ================
 类似大转盘的选择视图
+主要代码：
 
-主要代码
-    CircleSelectView * view =[[CircleSelectView alloc]initWithFrame:CGRectMake(100, 50, 300, 300)];
+    CircleSelectView *view =[[CircleSelectView alloc]initWithFrame:CGRectMake(100, 50, 300, 300)];
     [view setViewDelegate:self];
     [self.view addSubview:view];
 
@@ -12,4 +12,5 @@ SelectCircleDemo
 演示动画
 ==========
 ![](https://github.com/xhisdai/SelectCircleDemo/raw/master/cricle.gif)
+
 
